@@ -7,14 +7,17 @@
 #### containerにexecで入る
     docker exec -it a8602ae99fa8 bash
 
+#### excecで入ったコンテナから抜ける
+    exit
+
+---
+## docker-composeコマンド
 #### docker composerを起動
     docker-compose up -d
 
 #### 起動中のdocker composeを確認
     docker-compose ps
 
----
-## docker-composeコマンド
 #### docker-composeを停止
     docker-compose stop
 

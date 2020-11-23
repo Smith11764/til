@@ -63,3 +63,12 @@ Changes not staged for commit:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
+### HEADとは
+https://qiita.com/shibukk/items/8c9362a5bd399b9c56be
+https://qiita.com/ymzk-jp/items/00ff664da60c37458aaa
+#### HEADとは
+今時分が作業している場所を示すポインタ
+#### branchとは
+開発の本流から分岐し、本流の開発を邪魔することなく作業を続ける機能
+#### branched HEADとは
+HEADがBranchを指していない状態のこと

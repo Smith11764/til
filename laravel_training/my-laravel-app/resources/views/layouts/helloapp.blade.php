@@ -43,6 +43,7 @@
         @section('menubar')
         <h2 class="menutitle">※メニュー</h2>
         <ul>
+            {{-- 親テンプレートでは@endsectionではなく、@show --}}
             <li>@show</li>
         </ul>
         <hr size="1">

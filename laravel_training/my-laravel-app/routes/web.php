@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\HelloMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,6 @@ Route::get('/', function () {
 });
 
 // コントローラ@アクション名で設定できる
-Route::get('hello/', 'HelloController@index')->middleware('HelloMiddleware::class');
+Route::get('hello/', 'HelloController@index')->middleware('hello');
 
 Route::post('hello/', 'HelloController@post');

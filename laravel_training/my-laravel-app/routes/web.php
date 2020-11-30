@@ -19,6 +19,5 @@ Route::get('/', function () {
 });
 
 // コントローラ@アクション名で設定できる
-Route::get('hello/', 'HelloController@index')->middleware('hello');
-
+Route::get('hello/', 'HelloController@index');
 Route::post('hello/', 'HelloController@post');

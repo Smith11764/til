@@ -1,0 +1,16 @@
+# Dependency directories
+/node_modules
+
+# Build files
+/dist
+/out
+
+# Environment variables
+.env
+
+# IDE files
+/.vscode
+/.idea
+
+# OS generated files
+.DS_Store

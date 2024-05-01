@@ -232,3 +232,24 @@ function generateError(message: string, code: number): never {
 // もし、console.logの内容が表示されるとしたらundefinedかなにかだが、実行してみても何も表示されない
 const resultError = generateError("An error occurred!", 500);
 console.log(resultError);
+
+// モダンな関数の書き方----------->
+const addModern = (n1: number, n2: number = 1) => n1 + n2;
+
+const printOutput: (a: number | string) => void = (output = 'hello') => {
+  console.log(output);
+};
+
+printOutput(addModern(5, 2));
+printOutput(addModern(5));
+
+const button = document.querySelector('button');
+if(button){
+  button.addEventListener('click', event =>{
+  console.log(event);
+})
+}
+
+// スプレッド演算子----------->
+const hobbies = ['Sports', 'Cooking'];
+const activeHobbies = ['Hiking'];

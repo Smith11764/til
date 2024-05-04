@@ -230,26 +230,85 @@ function generateError(message: string, code: number): never {
 
 // throwされてしまうので、console.logには決して入らない
 // もし、console.logの内容が表示されるとしたらundefinedかなにかだが、実行してみても何も表示されない
-const resultError = generateError("An error occurred!", 500);
-console.log(resultError);
+// const resultError = generateError("An error occurred!", 500);
+// console.log(resultError);
 
 // モダンな関数の書き方----------->
 const addModern = (n1: number, n2: number = 1) => n1 + n2;
 
-const printOutput: (a: number | string) => void = (output = 'hello') => {
+const printOutput: (a: number | string) => void = (output = "hello") => {
   console.log(output);
 };
 
 printOutput(addModern(5, 2));
 printOutput(addModern(5));
 
-const button = document.querySelector('button');
-if(button){
-  button.addEventListener('click', event =>{
-  console.log(event);
-})
+const button = document.querySelector("button");
+if (button) {
+  button.addEventListener("click", (event) => {
+    console.log(event);
+  });
 }
 
 // スプレッド演算子----------->
-const hobbies = ['Sports', 'Cooking'];
-const activeHobbies = ['Hiking'];
+const hobbies = ["Sports", "Cooking"];
+const activeHobbies = ["Hiking"];
+
+// スプレッド演算子を使う場合
+activeHobbies.push(...hobbies);
+
+// スプレッド演算子を使わない場合
+activeHobbies.push(hobbies[0], hobbies[1]);
+activeHobbies.push("Hiking", "Sports", "Cooking");
+
+// オブジェクトに対してもスプレッド演算子を使うことができる
+const person5 = {
+  name: "yota",
+  age: 30,
+};
+
+// 参照渡し(ポインタをコピーしている = 同じオブジェクト(値）を参照している)
+const copiedPerson = person5;
+// コピー(値をコピーしている = 別のオブジェクト(値)を参照している)
+const copiedPerson2 = { ...person5 };
+
+// レストパラメーター----------->
+// 任意の数を受け取れるようにするパラメータ
+// 渡した引数が一つの配列にマージされて関数内で配列として処理される
+const addRest = (...numbers: number[]) => {
+  let result = 0;
+  return numbers.reduce((curResult, curValue) => {
+    return curResult + curValue;
+  }, 0);
+};
+
+const addedNumbers = addRest(5, 10, 2, 3.7);
+console.log(addedNumbers);
+
+// tupleの場合
+const addResultTuple = (...numbers: [number, number, number]) => {
+  return numbers.reduce((curResult, curValue) => {
+    return curResult + curValue;
+  }, 0);
+};
+
+const addedTuple = addResultTuple(5, 10, 2);
+console.log(addedTuple);
+
+// Destructuring(分割代入)----------->
+const [hobby1, hobby2, ...remainingHobbies] = hobbies;
+console.log(hobbies);
+
+// オブジェクトの場合
+const personExample = {
+  firstName: "yota",
+  age: 30,
+};
+
+// 変数名は代入元のプロパティ名と合わせる必要がある
+const { firstName, age } = personExample;
+console.log(firstName, age);
+
+// 「:」をつけてプロパティ名から独自の命名に変更できる
+const { firstName: testName, age: testAge } = personExample;
+console.log(testName, testAge);

@@ -1,7 +1,9 @@
 class Department {
   //   private readonly id: string;
   //   name: string;
-  private employees: string[] = [];
+
+  // 継承したクラスからもアクセスできるようにする
+  protected employees: string[] = [];
 
   constructor(private readonly id: string, public name: string) {
     // this.id = id;
@@ -41,12 +43,57 @@ accounting.addEmployee("Manu");
 accounting.printEmployeeInformation();
 
 class ITDepartment extends Department {
-  admins: string[];
   constructor(id: string, admins: string[]) {
     super(id, "IT");
-    this.admins = admins;
   }
 }
 
-const accounting2 = new ITDepartment("d2", ["Max"]);
-accounting2.describe();
+// パラメータプロパティ宣言をしない場合は以下のように記述する
+// class ITDepartment extends Department {
+//   admins: string[];
+
+//   constructor(id: string, admins: string[]) {
+//     super(id, "IT");
+// thisキーワードはsuper()の後でないと使用できない
+//     this.admins = admins;
+//   }
+// }
+
+const it = new ITDepartment("d2", ["Max"]);
+console.log("-------------");
+it.addEmployee("May");
+it.addEmployee("Jack");
+it.describe();
+it.printEmployeeInformation();
+console.log(it);
+
+
+class AccountingDepartment extends Department {
+  constructor(id: string, private reports: string[]) {
+    super(id, "Accounting");
+  }
+
+  addReport(text: string) {
+    this.reports.push(text);
+  }
+
+  printReports() {
+    console.log(this.reports);
+  }
+
+  // override
+  addEmployee(name: string) {
+    if (name === "Max") {
+      return;
+    }
+    this.employees.push(name);
+  }
+}
+
+const accounting2 = new AccountingDepartment("d3", []);
+console.log('-------------');
+accounting2.addReport("Something");
+accounting2.addEmployee("Max");
+accounting2.addEmployee("Manu");
+accounting2.printReports();
+accounting2.printEmployeeInformation();

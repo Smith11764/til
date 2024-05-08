@@ -69,12 +69,16 @@ console.log(it);
 
 
 class AccountingDepartment extends Department {
+  private lastReport: string;
+
   constructor(id: string, private reports: string[]) {
     super(id, "Accounting");
+    this.lastReport = reports[0];
   }
 
   addReport(text: string) {
     this.reports.push(text);
+    this.lastReport = text;
   }
 
   printReports() {
